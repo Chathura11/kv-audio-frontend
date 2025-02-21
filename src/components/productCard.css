@@ -1,0 +1,45 @@
+/* Styling the product card container */
+.product-card {
+    width: 250px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+/* Styling the product image */
+.product-card img {
+    width: 100%;
+    border-radius: 10px;
+    height: auto;
+}
+
+/* Styling the product name */
+.product-card span {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #333;
+}
+
+/* Styling the price */
+.product-card span:nth-child(3) {
+    font-size: 16px;
+    color: #ff5733;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+/* Styling the heading */
+.product-card h1 {
+    font-size: 20px;
+    margin-top: 10px;
+    color: #444;
+}
