@@ -1,14 +1,23 @@
 import './App.css'
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import ProductCard from './components/productCard'
 
-import AdminPage from './components/adminPage';
+import AdminPage from './pages/admin/adminPage';
+import HomePage from './pages/home/homePage'
+import Testing from './components/testing'
+import Login from './pages/login/login';
 
 function App() {
 
   return (
-    <div>
-      <AdminPage/>
-    </div>
+    <BrowserRouter>
+      <Routes path="/*">
+        <Route path='/testing' element={<Testing/>}/>
+        <Route path='/login' element={<Login/>}></Route>
+        <Route path='/admin/*' element={<AdminPage/>}/>
+        <Route path='/*' element={<HomePage/>} />
+      </Routes> 
+    </BrowserRouter>
   )
 }
 
