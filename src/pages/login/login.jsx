@@ -1,10 +1,13 @@
 import { useState } from "react"
 import "./login.css"
 import axios from 'axios';
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 export default function Login(){
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
+    const navigate = useNavigate();
 
     function handleOnSubmit(e){
         e.preventDefault(); 
@@ -13,8 +16,16 @@ export default function Login(){
             password:password
         }).then((res)=>{
             console.log(res)
+            toast.success('Login success')
+            const user = res.data.user;
+
+            if(user.role =="admin"){
+                navigate('/admin/')
+            }else{
+                navigate('/')
+            }
         }).catch((error)=>{
-            console.log(error)
+            toast.error(error.response.data.message)
         })
     }
 
