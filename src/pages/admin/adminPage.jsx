@@ -4,6 +4,8 @@ import { LuSpeaker } from "react-icons/lu";
 import { MdOutlinePreview } from "react-icons/md";
 import { FaRegUserCircle } from "react-icons/fa";
 import { Link, Route, Routes } from "react-router-dom";
+import AdminItemPage from "./adminItemPage";
+import AddItemPage from "./addItemPage";
 
 export default function AdminPage(){
     return(
@@ -21,19 +23,22 @@ export default function AdminPage(){
             <LuSpeaker/>
             Items
           </Link>
-          <button className='w-full h-[50px] text-[25px] font-bold flex justify-center items-center'>
+          <Link to="/admin/reviews" className='w-full h-[50px] text-[25px] font-bold flex justify-center items-center'>
             <MdOutlinePreview/>
             Reviews
-          </button>
-          <button className='w-full h-[50px] text-[25px] font-bold flex justify-center items-center'>
+          </Link>
+          <Link to="/admin/users" className='w-full h-[50px] text-[25px] font-bold flex justify-center items-center'>
             <FaRegUserCircle/>
             Users
-          </button>
+          </Link>
         </div>
-        <div className='w-[calc(100vw-400px)] bg-red-900'>
+        <div className='w-[calc(100vw-200px)]'>
           <Routes path="/*">
             <Route path="/bookings" element={<h1>Booking</h1>}/>
-            <Route path="/items" element={<h1>Items</h1>}/>
+            <Route path="/items" element={<AdminItemPage/>}/>
+            <Route path="/items/add" element={<AddItemPage/>}/>
+            <Route path="/reviews" element={<h1>Reviews</h1>}/>
+            <Route path="/users" element={<h1>Users</h1>}/>
           </Routes>
         </div>
       </div>
