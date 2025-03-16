@@ -1,99 +1,90 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { CiCirclePlus } from "react-icons/ci";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
+export default function AdminItemPage() {
+    const [items, setItems] = useState([]);
+    const [itemsLoaded,setItemsLoaded] = useState(false);
 
-export default function AdminItemPage(){
-    const sampleArray = [
-        {
-            key: "P001",
-            name: "Wireless Headphones",
-            price: "120.99",
-            category: "Audio",
-            dimensions: "20x15x10 cm",
-            description: "High-quality noise-canceling wireless headphones with deep bass.",
-            availability: true,
-            image: ["https://example.com/headphones.jpg"]
-        },
-        {
-            key: "P002",
-            name: "LED Stage Light",
-            price: "89.50",
-            category: "Light",
-            dimensions: "30x20x15 cm",
-            description: "Bright and colorful LED stage light with multiple modes.",
-            availability: true,
-            image: ["https://example.com/stage-light.jpg"]
-        },
-        {
-            key: "P003",
-            name: "Bluetooth Speaker",
-            price: "55.99",
-            category: "Audio",
-            dimensions: "12x8x5 cm",
-            description: "Portable Bluetooth speaker with rich sound and deep bass.",
-            availability: false,
-            image: ["https://example.com/speaker.jpg"]
-        },
-        {
-            key: "P004",
-            name: "Smart LED Bulb",
-            price: "25.00",
-            category: "Light",
-            dimensions: "6x6x10 cm",
-            description: "WiFi-enabled smart LED bulb with voice control and color options.",
-            availability: true,
-            image: ["https://example.com/smart-bulb.jpg"]
-        },
-        {
-            key: "P005",
-            name: "Noise-Canceling Earbuds",
-            price: "99.99",
-            category: "Audio",
-            dimensions: "5x5x2 cm",
-            description: "Compact noise-canceling earbuds with long battery life.",
-            availability: true,
-            image: ["https://example.com/earbuds.jpg"]
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if(!itemsLoaded){
+            const token = localStorage.getItem("token");
+
+            axios.get("http://localhost:3000/api/products", {
+                headers: {
+                    Authorization: "Bearer " + token
+                }
+            }).then((res) => {
+                setItems(res.data);
+                setItemsLoaded(true);
+            }).catch((error) => {
+                toast.error(error.response?.data?.error || "Error fetching data");
+            });
         }
-    ];
-    
-    const [items,setItems] = useState(sampleArray);
-    
-    return(
-        <div className="w-full h-full relative">
-            <table>
-                <thead>
-                    <th>Key</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Category</th>
-                    <th>Dimensions</th>
-                    <th>Availability</th>
-                    <th>Description</th>
-                </thead>
-                <tbody>
-                    
-                    {
-                        items.map((item,index)=>{
-                            return(
-                                <tr key={index}>
-                                    <td>{item.key}</td>
-                                    <td>{item.name}</td>
-                                    <td>{item.price}</td>
-                                    <td>{item.category}</td>
-                                    <td>{item.dimensions}</td>
-                                    <td>{item.availability}</td>
-                                    <td>{item.description}</td>
-                                </tr>
-                            )
-                        })
-                    }
-                </tbody>
-            </table>
+    }, [itemsLoaded]);
 
-            <Link to="/admin/items/add">
-                <CiCirclePlus className="text-[50px] absolute right-2 bottom-2 hover:text-red-900"/>
+    const handleDelete = (id) => {
+        const token = localStorage.getItem("token");
+        axios.delete(`http://localhost:3000/api/products/${id}`, {
+            headers: {
+                Authorization: "Bearer " + token
+            }
+        }).then(() => {
+            toast.success("Item deleted successfully");
+            // setItems(items.filter(item => item.key !== id));
+            setItemsLoaded(false);
+        }).catch((error) => {
+            toast.error(error.response?.data?.error || "Error deleting item");
+        });
+    };
+
+    return (
+        <div className="w-full min-h-screen p-6 bg-gray-100 flex flex-col items-center">
+            {!itemsLoaded && <div className="border-4 my-4 border-b-green-500 rounded-full animate-spin bg-0 w-[100px] h-[100px] "></div>}
+            {itemsLoaded&&<div className="overflow-x-auto shadow-lg rounded-lg">
+                <table className="min-w-full bg-white shadow-md rounded-lg">
+                    <thead className="bg-gray-800 text-white">
+                        <tr>
+                            <th className="px-6 py-3 text-left">Key</th>
+                            <th className="px-6 py-3 text-left">Name</th>
+                            <th className="px-6 py-3 text-left">Price</th>
+                            <th className="px-6 py-3 text-left">Category</th>
+                            <th className="px-6 py-3 text-left">Dimensions</th>
+                            <th className="px-6 py-3 text-left">Availability</th>
+                            <th className="px-6 py-3 text-left">Description</th>
+                            <th className="px-6 py-3 text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {items.map((item, index) => (
+                            <tr key={index} className="border-b hover:bg-gray-100">
+                                <td className="px-6 py-4">{item.key}</td>
+                                <td className="px-6 py-4">{item.name}</td>
+                                <td className="px-6 py-4">${item.price}</td>
+                                <td className="px-6 py-4">{item.category}</td>
+                                <td className="px-6 py-4">{item.dimensions}</td>
+                                <td className="px-6 py-4">
+                                    <span className={`px-3 py-1 rounded-full text-white text-sm ${item.availability ? 'bg-green-500' : 'bg-red-500'}`}>
+                                        {item.availability ? 'Available' : 'Out of Stock'}
+                                    </span>
+                                </td>
+                                <td className="px-6 py-4 truncate max-w-xs">{item.description}</td>
+                                <td className="px-6 py-4 flex justify-center gap-3">
+                                    <button onClick={()=>navigate('/admin/items/edit',{state:item})} className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-700 transition">Edit</button>
+                                    <button onClick={() => handleDelete(item.key)} className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-700 transition">Delete</button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>}
+            <Link to="/admin/items/add" className="fixed bottom-6 right-6 bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-800 transition">
+                <CiCirclePlus className="text-[50px]" />
             </Link>
         </div>
-    )
+    );
 }
