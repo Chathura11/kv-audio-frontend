@@ -10,11 +10,13 @@ export default function AdminItemPage() {
 
     const navigate = useNavigate();
 
+    const backendUrl = import.meta.env.VITE_BACKEND_URL; 
+
     useEffect(() => {
         if(!itemsLoaded){
             const token = localStorage.getItem("token");
 
-            axios.get("http://localhost:3000/api/products", {
+            axios.get(backendUrl+"/api/products", {
                 headers: {
                     Authorization: "Bearer " + token
                 }
@@ -29,7 +31,7 @@ export default function AdminItemPage() {
 
     const handleDelete = (id) => {
         const token = localStorage.getItem("token");
-        axios.delete(`http://localhost:3000/api/products/${id}`, {
+        axios.delete(`${backendUrl}/api/products/${id}`, {
             headers: {
                 Authorization: "Bearer " + token
             }

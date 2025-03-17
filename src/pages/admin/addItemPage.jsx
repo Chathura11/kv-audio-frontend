@@ -15,6 +15,8 @@ export default function AddItemPage({edit}){
     const [productDimensions,setProductDimensions] = useState(edit?location.state.dimensions:"");
     const [productDescription,setProductDescription] = useState(edit?location.state.description:"");
 
+    const backendUrl = import.meta.env.VITE_BACKEND_URL; 
+
     
 
     async function handleAddItem(e){
@@ -23,7 +25,7 @@ export default function AddItemPage({edit}){
 
         if(token){
             try {
-                const result = await axios.post("http://localhost:3000/api/products",{
+                const result = await axios.post(backendUrl+"/api/products",{
                 key :productKey,
                 name:productName,
                 price:productPrice,
@@ -53,7 +55,7 @@ export default function AddItemPage({edit}){
 
         if(token){
             try {
-                const result = await axios.put('http://localhost:3000/api/products/'+productKey,{
+                const result = await axios.put(backendUrl+'/api/products/'+productKey,{
                     key :productKey,
                     name:productName,
                     price:productPrice,
