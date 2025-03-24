@@ -11,7 +11,7 @@ function homePage() {
   return (
     <>
         <Header/>
-        <div className='h-[calc(100vh-100px)]'>
+        <div className='h-[calc(100vh-100px)] bg-primary'>
             <Routes path="/*">
                 
                 <Route path='/contact' element={<Contact/>}/>
