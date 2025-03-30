@@ -74,13 +74,26 @@ export default function AddItemPage({edit}){
 
         if(token){
             try {
+
+                let updadingImages = location.state.image;
+
+                if(productImages.length > 0){
+                    const promises =[]
+                    for(let i=0;i<productImages.length ; i++){
+                        const promise = mediaUpload(productImages[i])
+                        promises.push(promise);
+                    }
+                    updadingImages = await Promise.all(promises);
+                }                            
+
                 const result = await axios.put(backendUrl+'/api/products/'+productKey,{
                     key :productKey,
                     name:productName,
                     price:productPrice,
                     category:productCategory,
                     dimensions:productDimensions,
-                    description:productDescription
+                    description:productDescription,
+                    image:updadingImages
                 },{
                     headers:{
                         Authorization:"Bearer "+token

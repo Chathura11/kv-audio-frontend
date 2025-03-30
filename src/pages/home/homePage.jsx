@@ -6,6 +6,7 @@ import Contact from './contact'
 import Gallery from './gallery';
 import Item from './item';
 import Error from './error'
+import ProductOverView from './productOverview'
 
 function homePage() {
   return (
@@ -17,6 +18,7 @@ function homePage() {
                 <Route path='/contact' element={<Contact/>}/>
                 <Route path='/gallery' element={<Gallery/>}/>
                 <Route path='/item' element={<Item/>}/>
+                <Route path='/product/:key' element={<ProductOverView/>}/>
                 <Route path='/' element={<Home/>}/>
                 <Route path='/*' element={<Error/>}/>
             </Routes>
