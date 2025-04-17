@@ -7,6 +7,7 @@ import Gallery from './gallery';
 import Item from './item';
 import Error from './error'
 import ProductOverView from './productOverview'
+import BookingPage from './bookingPage';
 
 function homePage() {
   return (
@@ -18,6 +19,7 @@ function homePage() {
                 <Route path='/contact' element={<Contact/>}/>
                 <Route path='/gallery' element={<Gallery/>}/>
                 <Route path='/item' element={<Item/>}/>
+                <Route path='/booking' element={<BookingPage/>}></Route>
                 <Route path='/product/:key' element={<ProductOverView/>}/>
                 <Route path='/' element={<Home/>}/>
                 <Route path='/*' element={<Error/>}/>
