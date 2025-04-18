@@ -6,8 +6,40 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { Link, Route, Routes } from "react-router-dom";
 import AdminItemPage from "./adminItemPage";
 import AddItemPage from "./addItemPage";
+import AdminUsersPage from "./adminUsersPage";
+import AdminOrdersPage from "./adminOrdersPage";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function AdminPage(){
+
+  const [userValidated,setUserValidated] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+
+    if(!token){
+      window.location.href = '/login';
+    }
+
+    axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/users/`,{headers:{
+      Authorization:`Bearer ${token}`
+    }}).then((res)=>{
+      const user = res.data;
+
+      if(user.role =="admin"){
+        setUserValidated(true);
+      }else{       
+        window.location.href = '/';
+      }
+      
+    }).catch((error)=>{
+      console.log(error);
+      setUserValidated(false);
+    })
+  }, [])
+  
+
     return(
         <div className='w-full h-screen flex'>
         <div className='w-[400px] h-full bg-green-200'>
@@ -15,9 +47,9 @@ export default function AdminPage(){
             <BsGraphDown/>
             Dashboard
           </button>
-          <Link to="/admin/bookings" className='w-full h-[50px] text-[25px] font-bold flex justify-center items-center'>
+          <Link to="/admin/orders" className='w-full h-[50px] text-[25px] font-bold flex justify-center items-center'>
             <FaRegBookmark/>
-            Bookings
+            Orders
           </Link>
           <Link to="/admin/items" className='w-full h-[50px] text-[25px] font-bold flex justify-center items-center'>
             <LuSpeaker/>
@@ -33,14 +65,17 @@ export default function AdminPage(){
           </Link>
         </div>
         <div className='w-[calc(100vw-200px)]'>
-          <Routes path="/*">
-            <Route path="/bookings" element={<h1>Booking</h1>}/>
-            <Route path="/items" element={<AdminItemPage/>}/>
-            <Route path="/items/add" element={<AddItemPage/>}/>
-            <Route path="/items/edit" element={<AddItemPage edit={true}/>}/>
-            <Route path="/reviews" element={<h1>Reviews</h1>}/>
-            <Route path="/users" element={<h1>Users</h1>}/>
-          </Routes>
+          {userValidated && 
+            <Routes path="/*">
+              <Route path="/orders" element={<AdminOrdersPage/>}/>
+              <Route path="/users" element={<AdminUsersPage/>}/>
+              <Route path="/items" element={<AdminItemPage/>}/>
+              <Route path="/items/add" element={<AddItemPage/>}/>
+              <Route path="/items/edit" element={<AddItemPage edit={true}/>}/>
+              <Route path="/reviews" element={<h1>Reviews</h1>}/>
+              <Route path="/users" element={<h1>Users</h1>}/>
+            </Routes>
+          }
         </div>
       </div>
     )
