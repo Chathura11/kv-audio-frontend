@@ -41,39 +41,41 @@ export default function AdminUsersPage() {
         <div className="p-4">
             <h1 className="text-2xl font-bold mb-4">Admin Users Page</h1>
             {loading ? (
-                <div>Loading users...</div>
+                <div className="flex justify-center items-center mt-20">
+                    <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+                </div>
             ) : (
-                <div className="overflow-x-auto">
-                    <table className="min-w-full bg-white border border-gray-200 shadow-md rounded-lg">
-                        <thead>
+                <div className="overflow-x-auto w-full shadow-md rounded-lg bg-white">
+                    <table className="min-w-full text-gray-700">
+                        <thead className="bg-gray-100 uppercase text-xs font-semibold">
                             <tr className="bg-gray-100">
-                                <th className="py-2 px-4 border-b">Profile</th>
-                                <th className="py-2 px-4 border-b">First Name</th>
-                                <th className="py-2 px-4 border-b">Last Name</th>
-                                <th className="py-2 px-4 border-b">Email</th>
-                                <th className="py-2 px-4 border-b">Role</th>
-                                <th className="py-2 px-4 border-b">Phone</th>
-                                <th className="py-2 px-4 border-b">Address</th>
-                                <th className="py-2 px-4 border-b">Status</th>
+                                <th className="py-3 px-4 ">Profile</th>
+                                <th className="py-3 px-4 ">First Name</th>
+                                <th className="py-3 px-4 ">Last Name</th>
+                                <th className="py-3 px-4 ">Email</th>
+                                <th className="py-3 px-4 ">Role</th>
+                                <th className="py-3 px-4 ">Phone</th>
+                                <th className="py-3 px-4 ">Address</th>
+                                <th className="py-3 px-4 ">Status</th>
                             </tr>
                         </thead>
                         <tbody>
                             {users.map(user => (
                                 <tr key={user._id} className="hover:bg-gray-50">
-                                    <td className="py-2 px-4 border-b">
+                                    <td className="py-2 px-4">
                                         <img
                                             src={user.profilePicture}
                                             alt={`${user.firstname} ${user.lastname}`}
                                             className="w-10 h-10 rounded-full object-cover"
                                         />
                                     </td>
-                                    <td className="py-2 px-4 border-b">{user.firstname}</td>
-                                    <td className="py-2 px-4 border-b">{user.lastname}</td>
-                                    <td className="py-2 px-4 border-b">{user.email}</td>
-                                    <td className="py-2 px-4 border-b capitalize">{user.role}</td>
-                                    <td className="py-2 px-4 border-b">{user.phone}</td>
-                                    <td className="py-2 px-4 border-b">{user.address}</td>
-                                    <td onClick={()=>handleBlockUser(user.email)} className="py-2 px-4 border-b cursor-pointer">{user.isBlocked?"BLOCKED":"ACTIVE"}</td>
+                                    <td className="py-2 px-4 ">{user.firstname}</td>
+                                    <td className="py-2 px-4">{user.lastname}</td>
+                                    <td className="py-2 px-4 ">{user.email}</td>
+                                    <td className="py-2 px-4 capitalize">{user.role}</td>
+                                    <td className="py-2 px-4 ">{user.phone}</td>
+                                    <td className="py-2 px-4 ">{user.address}</td>
+                                    <td onClick={()=>handleBlockUser(user.email)} className="py-2 px-4 cursor-pointer">{user.isBlocked?"BLOCKED":"ACTIVE"}</td>
                                 </tr>
                             ))}
                         </tbody>

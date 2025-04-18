@@ -55,7 +55,9 @@ export default function AdminOrdersPage() {
         <div className="w-full p-4">
             <h1 className="text-2xl font-bold mb-4">Admin Orders Page</h1>
             {loading ? (
-                <div>Loading orders...</div>
+                <div className="flex justify-center items-center mt-20">
+                    <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+                </div>
             ) : (
                 <div className="overflow-x-auto shadow-lg rounded-lg bg-white">
                     <table className="w-full text-sm text-left text-gray-700">
@@ -75,7 +77,7 @@ export default function AdminOrdersPage() {
                             {orders.map(order => (
                                 <tr
                                     key={order._id}
-                                    className="hover:bg-gray-50 cursor-pointer transition"
+                                    className="hover:bg-gray-50 cursor-pointer transition " 
                                     onClick={() => {
                                         setActiveOrder(order);
                                         setModalOpened(true);
@@ -109,7 +111,7 @@ export default function AdminOrdersPage() {
             {
                 modalOpened &&
                 (
-                    <div className="fixed top-0 left-0 w-full h-full bg-[#00000075] flex justify-center items-center">
+                    <div className="fixed top-0 left-0 w-full h-full bg-[#00000090] flex justify-center items-center">
                         <div className="w-[500px] bg-white p-4 rounded-lg shadow-lg relative">
                             <IoMdCloseCircleOutline className="absolute top-2 right-2 text-3xl cursor-pointer hover:text-red-600" onClick={()=>{
                                 setModalOpened(false);
@@ -148,7 +150,7 @@ export default function AdminOrdersPage() {
                                 </thead>
                                 <tbody>
                                     {activeOrder.orderedItems.map(item => (
-                                        <tr key={item.product.key} className="border-b last:border-none">
+                                        <tr key={item.product.key} >
                                             <td className="p-2">
                                                 <img
                                                     src={item.product.image}

@@ -6,7 +6,7 @@ export default function ImageSlider(props){
 
     return(
         <div className="w-full h-full">
-            <img src={selectedImage} alt="product" className="w-full h-[450px] object-cover" />
+            <img src={selectedImage} alt="product" className="w-full h-[450px] object-contain" />
             <div className="w-full h-[150px] mt-[20px] flex justify-center">
                 {images.map((image,index)=>{
                     return(
