@@ -27,21 +27,22 @@ export default function ProductOverView(){
     
 
     return(
-        <div className="w-full h-full  flex justify-center items-center">
+        <div className="w-full flex justify-center items-center">
             {
                 loadingState == 'loading' && <div className="border-4 my-4 border-b-green-500 rounded-full animate-spin bg-0 w-[70px] h-[70px] "></div>
             }
             {
                 loadingState =='loaded' &&
-                <div className="w-full h-full flex justify-center">
-                    <div className="w-[49%] h-full ">
+                <div className="w-full h-full flex flex-col justify-center items-center">
+                    <h1 className="text-2xl my-6 font-bold text-accent text-center">{product.name}</h1>
+                    <div className="w-full">
                         <ImageSlider images={product.image}/>
                     </div>
-                    <div className="w-[49%] h-full flex flex-col items-center">
-                        <h1 className="text-3xl font-bold text-accent">{product.name}</h1>
-                        <h2 className="text-xl font-semibold text-gray-800">{product.category}</h2>
-                        <p className="text-gray-700 mt-4">{product.description}</p>
-                        <p className="text-lg font-bold text-green-500 mt-4">{product.price}</p>
+                    <div className="w-full p-2 flex flex-col items-center">
+                        <h1 className="hidden text-3xl font-bold text-accent">{product.name}</h1>
+                        <h2 className="text-xl font-semibold text-gray-800">{product.category} Category</h2>
+                        <p className="text-gray-700 mt-4 text-center">{product.description}</p>
+                        <p className="text-lg text-green-500 mt-4">Rs. {product.price.toFixed(2)}</p>
                         <div className="mt-4 text-sm text-gray-600">
                             <span className="font-medium">Dimensions:</span>{product.dimensions}
                         </div>
