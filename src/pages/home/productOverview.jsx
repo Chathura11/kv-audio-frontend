@@ -33,13 +33,13 @@ export default function ProductOverView(){
             }
             {
                 loadingState =='loaded' &&
-                <div className="w-full h-full flex flex-col justify-center items-center">
-                    <h1 className="text-2xl my-6 font-bold text-accent text-center">{product.name}</h1>
-                    <div className="w-full">
+                <div className="w-full h-full flex flex-col md:flex-row justify-center items-center">
+                    <h1 className="text-2xl md:hidden my-6 font-bold text-accent text-center">{product.name}</h1>
+                    <div className="w-full md:w-[49%]">
                         <ImageSlider images={product.image}/>
                     </div>
-                    <div className="w-full p-2 flex flex-col items-center">
-                        <h1 className="hidden text-3xl font-bold text-accent">{product.name}</h1>
+                    <div className="w-full md:w-[49%] p-2 flex flex-col items-center">
+                        <h1 className="hidden md:block text-3xl font-bold text-accent">{product.name}</h1>
                         <h2 className="text-xl font-semibold text-gray-800">{product.category} Category</h2>
                         <p className="text-gray-700 mt-4 text-center">{product.description}</p>
                         <p className="text-lg text-green-500 mt-4">Rs. {product.price.toFixed(2)}</p>
