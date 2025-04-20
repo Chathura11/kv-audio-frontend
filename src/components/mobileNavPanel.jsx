@@ -1,7 +1,8 @@
 import { IoMdClose } from "react-icons/io";
 import { useEffect, useState } from "react";
-import { CiHome, CiImageOn, CiMail, CiShoppingTag, CiCalendar } from "react-icons/ci";
+import { CiHome, CiImageOn, CiMail, CiShoppingTag, CiCalendar} from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
+import { CiLogout,CiLogin } from "react-icons/ci";
 
 export default function MobileNavPanel(props) {
     const isOpen = props.isOpen;
@@ -9,6 +10,8 @@ export default function MobileNavPanel(props) {
 
     const [visible, setVisible] = useState(false);
     const [animate, setAnimate] = useState(false);
+
+    const token = localStorage.getItem('token');
 
     const navigate = useNavigate();
 
@@ -62,6 +65,18 @@ export default function MobileNavPanel(props) {
                             <div onClick={() => Goto('/booking')} className='flex items-center gap-3 text-[18px] text-gray-700 hover:bg-accent hover:text-white p-2 rounded-lg cursor-pointer transition'>
                                 <CiCalendar className="text-2xl" /> Booking
                             </div>
+                            {token !=null ?
+                                <div onClick={() => {
+                                    localStorage.removeItem('token')
+                                    Goto('/login')
+                                }} className='flex items-center gap-3 text-[18px] text-gray-700 hover:bg-accent hover:text-white p-2 rounded-lg cursor-pointer transition'>
+                                    <CiLogout className="text-2xl" /> Log Out
+                                </div>
+                                :
+                                <div onClick={() => Goto('/login')} className='flex items-center gap-3 text-[18px] text-gray-700 hover:bg-accent hover:text-white p-2 rounded-lg cursor-pointer transition'>
+                                    <CiLogin className="text-2xl" /> Log In
+                                </div>
+                            }
                         </div>
 
                     </div>

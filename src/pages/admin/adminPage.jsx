@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import AdminReviewPage from "./adminReviewPage";
 import AdminDashboard from "./adminDashboard";
+import { MdWebAsset } from "react-icons/md";
 
 export default function AdminPage() {
   const [userValidated, setUserValidated] = useState(false);
@@ -61,6 +62,10 @@ export default function AdminPage() {
         <Link to="/admin/users" className="flex items-center gap-3 p-4 text-lg hover:bg-[#025043] transition">
           <FaRegUserCircle className="text-2xl" />
           Users
+        </Link>
+        <Link to="/" className="flex items-center gap-3 p-4 text-lg hover:bg-[#025043] transition">
+          <MdWebAsset className="text-2xl" />
+          Go to Site
         </Link>
       </aside>
 

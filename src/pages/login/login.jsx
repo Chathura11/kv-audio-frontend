@@ -89,6 +89,13 @@ export default function Login() {
                         Login with Google
                     </div>
 
+                    <div
+                        onClick={() => navigate('/register')}
+                        className="w-[300px] py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white text-lg rounded-xl shadow-md flex justify-center items-center cursor-pointer hover:from-emerald-600 hover:to-green-500 transition-all"
+                    >
+                        Don't have an account? Register
+                    </div>
+
                 </div>
             </form>
         </div>
