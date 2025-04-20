@@ -37,6 +37,7 @@ function header() {
           <Link to="/contact" className='hidden md:block text-[22px]  m-1 p-2 rounded hover:bg-white hover:text-accent'>Contact</Link>
           <Link to="/gallery" className='hidden md:block text-[22px]  m-1 p-2 rounded hover:bg-white hover:text-accent'>Gallery</Link>
           <Link to="/item" className='hidden md:block text-[22px]  m-1 p-2 rounded hover:bg-white hover:text-accent'>Items</Link>
+          <Link to="/inquiry" className='hidden md:block text-[22px]  m-1 p-2 rounded hover:bg-white hover:text-accent'>Inquiries</Link>
           <Link to="/booking" className='hidden md:block text-[22px]  m-1 absolute right-25 p-2 rounded-full hover:bg-white hover:text-accent'><FaCartPlus/></Link>
         </div>
         <FaBars className='absolute right-5 text-[24px] md:hidden' onClick={()=>setNavPanelOpen(true)}/>

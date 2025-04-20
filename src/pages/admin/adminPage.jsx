@@ -12,6 +12,8 @@ import axios from "axios";
 import AdminReviewPage from "./adminReviewPage";
 import AdminDashboard from "./adminDashboard";
 import { MdWebAsset } from "react-icons/md";
+import { IoMdSearch } from "react-icons/io";
+import AdminInquiryPage from "./adminInquiryPage";
 
 export default function AdminPage() {
   const [userValidated, setUserValidated] = useState(false);
@@ -59,6 +61,10 @@ export default function AdminPage() {
           <MdOutlinePreview className="text-2xl" />
           Reviews
         </Link>
+        <Link to="/admin/inquiries" className="flex items-center gap-3 p-4 text-lg hover:bg-[#025043] transition">
+          <IoMdSearch className="text-2xl" />
+          Inquiries
+        </Link>
         <Link to="/admin/users" className="flex items-center gap-3 p-4 text-lg hover:bg-[#025043] transition">
           <FaRegUserCircle className="text-2xl" />
           Users
@@ -80,6 +86,7 @@ export default function AdminPage() {
             <Route path="/items/add" element={<AddItemPage />} />
             <Route path="/items/edit" element={<AddItemPage edit={true} />} />
             <Route path="/reviews" element={<AdminReviewPage/>} />
+            <Route path="/inquiries" element={<AdminInquiryPage/>} />
           </Routes>
         ) : (
           <div className="flex justify-center items-center h-full text-gray-500">

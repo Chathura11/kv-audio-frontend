@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { CiHome, CiImageOn, CiMail, CiShoppingTag, CiCalendar} from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
 import { CiLogout,CiLogin } from "react-icons/ci";
+import { CiSearch } from "react-icons/ci";
 
 export default function MobileNavPanel(props) {
     const isOpen = props.isOpen;
@@ -64,6 +65,9 @@ export default function MobileNavPanel(props) {
                             </div>
                             <div onClick={() => Goto('/booking')} className='flex items-center gap-3 text-[18px] text-gray-700 hover:bg-accent hover:text-white p-2 rounded-lg cursor-pointer transition'>
                                 <CiCalendar className="text-2xl" /> Booking
+                            </div>
+                            <div onClick={() => Goto('/inquiry')} className='flex items-center gap-3 text-[18px] text-gray-700 hover:bg-accent hover:text-white p-2 rounded-lg cursor-pointer transition'>
+                                <CiSearch className="text-2xl" /> Inquiries
                             </div>
                             {token !=null ?
                                 <div onClick={() => {

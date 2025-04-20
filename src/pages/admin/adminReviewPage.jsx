@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
+import toast from "react-hot-toast";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 
 export default function AdminReviewPage(){
@@ -41,11 +42,13 @@ export default function AdminReviewPage(){
             }
         ).then((res)=>{
             console.log(res.data);
+            toast.success('Review approved successfully!');
             setModalOpened(false);
             setLoading(true);
             
         }).catch((error)=>{
             console.log(error);
+            toast.error('Failed to approve review!');
             setModalOpened(false);
             setLoading(true);
             
@@ -61,11 +64,13 @@ export default function AdminReviewPage(){
         }}
         ).then((res)=>{
             console.log(res.data);
+            toast.success('Review deleted successfully!');
             setModalOpened(false);
             setLoading(true);
             
         }).catch((error)=>{
             console.log(error);
+            toast.error('Falied to delete review!');
             setModalOpened(false);
             setLoading(true);
             
@@ -138,12 +143,12 @@ export default function AdminReviewPage(){
                                 <p><span className="font-semibold">Approval Status : </span>{activeReview.isApproved?'Approved':'Pending'}</p>
                             </div>
                             <div className="my-5 w-full flex items-center">
-                                <button className="bg-green-500 text-white px-4 py-1 rounded-md cursor-pointer" onClick={()=>{
+                                <button className="bg-green-500 text-white px-4 py-1 rounded-md cursor-pointer hover:bg-green-900" onClick={()=>{
                                     handleReviewStatusChange(activeReview.email,true)
                                 }}>
                                     Approve
                                 </button>
-                                <button className="bg-red-500 text-white px-4 py-1 rounded-md ml-4 cursor-pointer" onClick={()=>{
+                                <button className="bg-red-500 text-white px-4 py-1 rounded-md ml-4 cursor-pointer hover:bg-red-900" onClick={()=>{
                                     deleteReview(activeReview.email)
                                 }}>
                                     Delete

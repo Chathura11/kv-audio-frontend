@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 
 export default function AdminOrdersPage() {
@@ -40,11 +41,13 @@ export default function AdminOrdersPage() {
             }
         ).then((res)=>{
             console.log(res.data);
+            toast.success("Order status changed successfully!");
             setModalOpened(false);
             setLoading(true);
             
         }).catch((error)=>{
             console.log(error);
+            toast.success("Failed to changed order status!");
             setModalOpened(false);
             setLoading(true);
             
@@ -128,12 +131,12 @@ export default function AdminOrdersPage() {
                                 <p><span className="font-semibold">Order Date : </span>{new Date(activeOrder.orderDate).toLocaleDateString()}</p>
                             </div>
                             <div className="my-5 w-full flex items-center">
-                                <button className="bg-green-500 text-white px-4 py-1 rounded-md cursor-pointer" onClick={()=>{
+                                <button className="bg-green-500 text-white px-4 py-1 rounded-md cursor-pointer hover:bg-green-900" onClick={()=>{
                                     handleOrderStatusChange(activeOrder.orderId,"Approved")
                                 }}>
                                     Approve
                                 </button>
-                                <button className="bg-red-500 text-white px-4 py-1 rounded-md ml-4 cursor-pointer" onClick={()=>{
+                                <button className="bg-red-500 text-white px-4 py-1 rounded-md ml-4 cursor-pointer hover:bg-red-900" onClick={()=>{
                                     handleOrderStatusChange(activeOrder.orderId,"Rejected")
                                 }}>
                                     Reject
