@@ -122,8 +122,8 @@ export default function AddItemPage({edit}){
                 <input value={productDimensions} className="h-[30px] m-2" type="text"  onChange={(e)=>setProductDimensions(e.target.value)} placeholder="Product Dimensions"/>
                 <textarea value={productDescription} className="h-[30px] m-2" type="text"  onChange={(e)=>setProductDescription(e.target.value)} placeholder="Product Description"/>
                 <input multiple type="file" onChange={(e)=>setProductImages(e.target.files)} className="w-full p-2 border rounded"  />
-                <button onClick={edit?handleUpdate:handleAddItem} className="w-full mt-2 p-2 bg-blue-500 text-white rounded hover:bg-blue-600">{edit?"Update":"Add"}</button>
-                <button onClick={()=>navigate("/admin/items")} className="w-full mt-2 p-2 bg-red-500 text-white rounded hover:bg-red-600">Cancel</button>
+                <button onClick={edit?handleUpdate:handleAddItem} className="w-full mt-2 p-2 bg-blue-500 text-white rounded hover:bg-blue-600 cursor-pointer">{edit?"Update":"Add"}</button>
+                <button onClick={()=>navigate("/admin/items")} className="w-full mt-2 p-2 bg-red-500 text-white rounded hover:bg-red-600 cursor-pointer">Cancel</button>
             </div>
         </div>
     )
