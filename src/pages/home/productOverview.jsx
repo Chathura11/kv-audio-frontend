@@ -202,6 +202,7 @@ export default function ProductOverView(){
                     <h1 className="text-3xl font-bold text-accent">Error Occured</h1>
                 </div>
             }
+            { loadingState =='loaded' &&
             <div className="py-12 px-12 flex flex-col">
                 <h1 className="text-xl font-bold">Ratings & Reviews</h1>
                 <div className="flex flex-col md:flex-row w-full mt-12 justify-star ">
@@ -350,7 +351,7 @@ export default function ProductOverView(){
                                 />
                                 <p className="text-gray-700 mt-2">{review.comment}</p>
                             </div>
-                            {user.email === review.email &&
+                            {user && user.email === review.email &&
                                 <div className="absolute right-0">
                                     <MdDelete className="hover:bg-white hover:text-red-500 rounded-full cursor cursor-pointer" onClick={()=>{
                                         deleteReview(review.email)
@@ -363,6 +364,7 @@ export default function ProductOverView(){
                     
                 </div>
             </div>
+            }
         </div>
     )
 }
