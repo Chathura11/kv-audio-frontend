@@ -53,7 +53,7 @@ export default function AdminOrdersPage() {
 
     return (
         <div className="w-full p-4">
-            <h1 className="text-2xl font-bold mb-4">Admin Orders Page</h1>
+            <h1 className="text-3xl font-bold mb-8">Admin Orders Page</h1>
             {loading ? (
                 <div className="flex justify-center items-center mt-20">
                     <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>

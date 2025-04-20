@@ -40,7 +40,7 @@ export default function AdminItemPage() {
 
     return (
         <div className="w-full p-4">
-            <h1 className="text-2xl font-bold mb-6">Admin Items Page</h1>
+            <h1 className="text-3xl font-bold mb-8">Admin Items Page</h1>
 
             {loading ? (
                 <div className="flex justify-center items-center mt-20">

@@ -9,6 +9,8 @@ import AdminUsersPage from "./adminUsersPage";
 import AdminOrdersPage from "./adminOrdersPage";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import AdminReviewPage from "./adminReviewPage";
+import AdminDashboard from "./adminDashboard";
 
 export default function AdminPage() {
   const [userValidated, setUserValidated] = useState(false);
@@ -40,7 +42,7 @@ export default function AdminPage() {
     <div className="w-full h-screen flex bg-gray-50 overflow-hidden">
       {/* Sidebar */}
       <aside className="w-64 h-full bg-[#037c6e] text-white flex flex-col shadow-lg">
-        <Link to="/admin/dashboard" className="flex items-center gap-3 p-4 text-lg hover:bg-[#025043] transition">
+        <Link to="/admin" className="flex items-center gap-3 p-4 text-lg hover:bg-[#025043] transition">
           <BsGraphDown className="text-2xl" />
           Dashboard
         </Link>
@@ -66,13 +68,13 @@ export default function AdminPage() {
       <main className="flex-1 p-6 overflow-y-auto">
         {userValidated ? (
           <Routes>
+            <Route path="/" element={<AdminDashboard />} />
             <Route path="/orders" element={<AdminOrdersPage />} />
             <Route path="/users" element={<AdminUsersPage />} />
             <Route path="/items" element={<AdminItemPage />} />
             <Route path="/items/add" element={<AddItemPage />} />
             <Route path="/items/edit" element={<AddItemPage edit={true} />} />
-            <Route path="/reviews" element={<h1 className="text-xl font-bold">Reviews</h1>} />
-            <Route path="/users" element={<h1 className="text-xl font-bold">Users</h1>} />
+            <Route path="/reviews" element={<AdminReviewPage/>} />
           </Routes>
         ) : (
           <div className="flex justify-center items-center h-full text-gray-500">
