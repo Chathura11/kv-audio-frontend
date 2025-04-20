@@ -29,7 +29,10 @@ export default function ProductOverView(){
     return(
         <div className="w-full flex justify-center items-center">
             {
-                loadingState == 'loading' && <div className="border-4 my-4 border-b-green-500 rounded-full animate-spin bg-0 w-[70px] h-[70px] "></div>
+                loadingState == 'loading' && 
+                <div className="flex justify-center items-center mt-20">
+                    <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+                </div>
             }
             {
                 loadingState =='loaded' &&

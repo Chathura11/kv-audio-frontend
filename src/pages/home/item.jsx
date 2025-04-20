@@ -27,9 +27,9 @@ export default function Item() {
   return (
     <div className='w-full h-full flex flex-wrap pt-[50px] justify-center'>
       {state =="loading" &&
-        <div className='w-full h-full  flex justify-center items-center'>
-          <div className='w-[50px] h-[50px] border-4 border-t-green-500 rounded-full animate-spin'></div>
-        </div>
+        <div className="flex justify-center items-center mt-20">
+          <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+      </div>
       }
       {
         state =="success" &&

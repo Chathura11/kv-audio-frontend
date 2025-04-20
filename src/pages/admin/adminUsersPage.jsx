@@ -66,7 +66,7 @@ export default function AdminUsersPage() {
                                         <img
                                             src={user.profilePicture}
                                             alt={`${user.firstname} ${user.lastname}`}
-                                            className="w-10 h-10 rounded-full object-cover"
+                                            className="w-10 h-10 rounded-full object-contain"
                                         />
                                     </td>
                                     <td className="py-2 px-4 ">{user.firstname}</td>

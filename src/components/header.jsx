@@ -2,20 +2,30 @@ import React, { useState } from 'react'
 import { FaBars, FaCartPlus } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import MobileNavPanel from './mobileNavPanel';
+import { CiLogout } from "react-icons/ci";
 
 function header() {
 
   const [navPanelOpen,setNavPanelOpen] = useState(false);
+  const token = localStorage.getItem('token');
 
   return (
-    <header className='w-full h-[70px] shadow-xl flex justify-center items-center relative bg-accent text-white'>
-        <img src="/logo.jpg" alt='logo' className='w-[60px] h-[60px] object-cover border-[1px] absolute left-1 rounded-full '/>
-        <Link to="/" className='hidden text-[25px] font-bold m-1'>Home</Link>
-        <Link to="/contact" className='hidden text-[25px] font-bold m-1'>Contact</Link>
-        <Link to="/gallery" className='hidden text-[25px] font-bold m-1'>Gallery</Link>
-        <Link to="/item" className='hidden text-[25px] font-bold m-1'>Items</Link>
-        <Link to="/booking" className='hidden text-[25px] font-bold m-1 absolute right-3'><FaCartPlus/></Link>
-        <FaBars className='absolute right-5 text-[24px]' onClick={()=>setNavPanelOpen(true)}/>
+    <header className='w-full h-[70px] shadow-md  flex justify-center items-center relative bg-accent text-white backdrop-blur-md top-0 z-50'>
+        <img src="/logo.jpg" alt="Logo" className="w-16 h-16 object-cover border-4 border-white rounded-full shadow-lg hover:scale-105 transition-transform duration-300 absolute left-1"/>
+        <div className='hidden md:flex w-[450px] justify-evenly items-center'>
+          <Link to="/" className='hidden md:block text-[22px] m-1 p-2 rounded hover:bg-white hover:text-accent'>Home</Link>
+          <Link to="/contact" className='hidden md:block text-[22px]  m-1 p-2 rounded hover:bg-white hover:text-accent'>Contact</Link>
+          <Link to="/gallery" className='hidden md:block text-[22px]  m-1 p-2 rounded hover:bg-white hover:text-accent'>Gallery</Link>
+          <Link to="/item" className='hidden md:block text-[22px]  m-1 p-2 rounded hover:bg-white hover:text-accent'>Items</Link>
+          <Link to="/booking" className='hidden md:block text-[22px]  m-1 absolute right-20 p-2 rounded-full hover:bg-white hover:text-accent'><FaCartPlus/></Link>
+        </div>
+        <FaBars className='absolute right-5 text-[24px] md:hidden' onClick={()=>setNavPanelOpen(true)}/>
+        {token != null &&
+          <CiLogout className='hidden md:block absolute right-5 text-[30px] cursor-pointer rounded-full p-1 hover:bg-white hover:text-red-500' onClick={()=>{
+            localStorage.removeItem('token')
+            window.location.href = '/login'
+          }}/>
+        }
         <MobileNavPanel isOpen={navPanelOpen} setOpen={setNavPanelOpen}/>
     </header>
   )

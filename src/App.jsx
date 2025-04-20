@@ -1,28 +1,32 @@
 import './App.css'
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
-import ProductCard from './components/productCard'
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 import AdminPage from './pages/admin/adminPage';
 import HomePage from './pages/home/homePage'
 import Testing from './components/testing'
 import Login from './pages/login/login';
-import toast, { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 import RegisterPage from './pages/register/register';
+import VerifyEmail from './pages/verifyEmail/verifyEmail';
 
 
 function App() {
 
   return (
-    <BrowserRouter>
-      <Toaster/>
-      <Routes path="/*">
-        <Route path='/testing' element={<Testing/>}/>
-        <Route path='/login' element={<Login/>}></Route>
-        <Route path='/Register' element={<RegisterPage/>}></Route>
-        <Route path='/admin/*' element={<AdminPage/>}/>
-        <Route path='/*' element={<HomePage/>} />
-      </Routes> 
-    </BrowserRouter>
+    <GoogleOAuthProvider clientId='240939730538-hfvtfa08468377lhi7ao3lcg2p8qubd6.apps.googleusercontent.com'>
+      <BrowserRouter>
+        <Toaster/>
+        <Routes path="/*">
+          <Route path='/testing' element={<Testing/>}/>
+          <Route path='/login' element={<Login/>}></Route>
+          <Route path='/Register' element={<RegisterPage/>}></Route>
+          <Route path='/verify-email' element={<VerifyEmail/>}></Route>
+          <Route path='/admin/*' element={<AdminPage/>}/>
+          <Route path='/*' element={<HomePage/>} />
+        </Routes> 
+      </BrowserRouter>
+    </GoogleOAuthProvider>
   )
 }
 
