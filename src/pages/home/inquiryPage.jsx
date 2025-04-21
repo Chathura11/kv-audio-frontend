@@ -160,7 +160,7 @@ export default function InquiryPage() {
                                 }
 
                                 <p className="text-gray-600 mb-1"><strong>Response:</strong> {inquiry.response !== "" ? inquiry.response : "Not Responded"}</p>
-                                <p className="text-gray-500 text-sm mb-3">Date: {new Date(inquiry.date).toLocaleDateString()}</p>
+                                <p className="text-gray-500 text-sm mb-3 absolute right-15 top-3">Date: {new Date(inquiry.date).toLocaleDateString()}</p>
                                 <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${inquiry.isResolved ? 'bg-green-200 text-green-700' : 'bg-yellow-200 text-yellow-700'}`}>
                                     {inquiry.isResolved ? "Resolved" : "Pending"}
                                 </span>
@@ -168,7 +168,7 @@ export default function InquiryPage() {
 
                             
                             <div
-                                className="p-2 hover:text-red-500 cursor-pointer bg-white rounded-xl border border-gray-200 flex items-center justify-center absolute right-1 top-1"
+                                className="p-2 hover:text-white hover:bg-red-500 cursor-pointer bg-white rounded-xl border border-gray-200 flex items-center justify-center absolute right-1 top-1"
                                 onClick={() => handleDeleteInquiry(inquiry)}
                             >
                                 <MdDelete size={20} />

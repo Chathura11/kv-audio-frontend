@@ -32,12 +32,12 @@ function header() {
   return (
     <header className='w-full h-[70px] shadow-md  flex justify-center items-center relative bg-accent text-white backdrop-blur-md top-0 z-50'>
         <img src="/logo.jpg" alt="Logo" className="w-16 h-16 object-cover border-4 border-white rounded-full shadow-lg hover:scale-105 transition-transform duration-300 absolute left-1"/>
-        <div className='hidden md:flex w-[450px] justify-evenly items-center'>
-          <Link to="/" className='hidden md:block text-[22px] m-1 p-2 rounded hover:bg-white hover:text-accent'>Home</Link>
-          <Link to="/contact" className='hidden md:block text-[22px]  m-1 p-2 rounded hover:bg-white hover:text-accent'>Contact</Link>
-          <Link to="/gallery" className='hidden md:block text-[22px]  m-1 p-2 rounded hover:bg-white hover:text-accent'>Gallery</Link>
-          <Link to="/item" className='hidden md:block text-[22px]  m-1 p-2 rounded hover:bg-white hover:text-accent'>Items</Link>
-          <Link to="/inquiry" className='hidden md:block text-[22px]  m-1 p-2 rounded hover:bg-white hover:text-accent'>Inquiries</Link>
+        <div className='hidden md:flex w-[500px] justify-evenly items-center'>
+          <Link to="/" className='hidden md:block text-[22px] m-1 p-2 rounded-full hover:bg-white hover:text-accent'>Home</Link>
+          <Link to="/contact" className='hidden md:block text-[22px]  m-1 p-2 rounded-full hover:bg-white hover:text-accent'>Contact</Link>
+          <Link to="/gallery" className='hidden md:block text-[22px]  m-1 p-2 rounded-full hover:bg-white hover:text-accent'>Gallery</Link>
+          <Link to="/item" className='hidden md:block text-[22px]  m-1 p-2 rounded-full hover:bg-white hover:text-accent'>Items</Link>
+          <Link to="/inquiry" className='hidden md:block text-[22px]  m-1 p-2 rounded-full hover:bg-white hover:text-accent'>Inquiries</Link>
           <Link to="/booking" className='hidden md:block text-[22px]  m-1 absolute right-25 p-2 rounded-full hover:bg-white hover:text-accent'><FaCartPlus/></Link>
         </div>
         <FaBars className='absolute right-5 text-[24px] md:hidden' onClick={()=>setNavPanelOpen(true)}/>

@@ -352,8 +352,8 @@ export default function ProductOverView(){
                                 <p className="text-gray-700 mt-2">{review.comment}</p>
                             </div>
                             {user && user.email === review.email &&
-                                <div className="absolute right-0">
-                                    <MdDelete className="hover:bg-white hover:text-red-500 rounded-full cursor cursor-pointer" onClick={()=>{
+                                <div className="absolute right-1">
+                                    <MdDelete className="hover:bg-red-500 hover:text-white rounded-full text-xl p-1 cursor-pointer" onClick={()=>{
                                         deleteReview(review.email)
                                     }}/>
                                 </div>
