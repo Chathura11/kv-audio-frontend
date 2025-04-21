@@ -52,8 +52,10 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-gray-300 py-8 text-center">
-        <p>&copy; 2025 KV Audio — All rights reserved.</p>
+      <footer className="bg-gray-900 text-gray-300 py-8 text-center flex justify-center items-center gap-2">    
+        <p>&copy; 2025</p>
+        <img src="/ccNew.png" alt="Logo" className="h-6 w-6" />
+        <p> ChathuraCreations — All rights reserved.</p>
       </footer>
 
     </div>

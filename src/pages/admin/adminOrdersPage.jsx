@@ -131,12 +131,12 @@ export default function AdminOrdersPage() {
                                 <p><span className="font-semibold">Order Date : </span>{new Date(activeOrder.orderDate).toLocaleDateString()}</p>
                             </div>
                             <div className="my-5 w-full flex items-center">
-                                <button className="bg-green-500 text-white px-4 py-1 rounded-md cursor-pointer hover:bg-green-900" onClick={()=>{
+                                <button className="bg-green-500 text-white px-4 py-1 rounded-md cursor-pointer hover:bg-green-600" onClick={()=>{
                                     handleOrderStatusChange(activeOrder.orderId,"Approved")
                                 }}>
                                     Approve
                                 </button>
-                                <button className="bg-red-500 text-white px-4 py-1 rounded-md ml-4 cursor-pointer hover:bg-red-900" onClick={()=>{
+                                <button className="bg-red-500 text-white px-4 py-1 rounded-md ml-4 cursor-pointer hover:bg-red-600" onClick={()=>{
                                     handleOrderStatusChange(activeOrder.orderId,"Rejected")
                                 }}>
                                     Reject

@@ -141,13 +141,13 @@ export default function AdminInquiryPage() {
 
                         <div className="my-5 w-full flex items-center">
                             <button
-                                className="bg-green-500 text-white px-4 py-1 rounded-md cursor-pointer hover:bg-green-900"
+                                className="bg-green-500 text-white px-4 py-1 rounded-md cursor-pointer hover:bg-green-600"
                                 onClick={() => handleStatusChange(activeInquiry)}
                             >
                                 Mark as Resolved
                             </button>
                             <button
-                                className="bg-red-500 text-white px-4 py-1 rounded-md ml-4 cursor-pointer hover:bg-red-900"
+                                className="bg-red-500 text-white px-4 py-1 rounded-md ml-4 cursor-pointer hover:bg-red-600"
                                 onClick={() => deleteInquiry(activeInquiry)}
                             >
                                 Delete

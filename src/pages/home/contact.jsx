@@ -15,13 +15,13 @@ export default function Contact() {
         <div className="bg-white p-6 rounded-2xl shadow hover:shadow-lg text-center border-t-4 border-[#3674B5] transition">
           <FaPhoneAlt className="text-4xl text-[#3674B5] mx-auto mb-4" />
           <h3 className="text-xl font-bold mb-2">Call Us</h3>
-          <p className="text-gray-600">+94 71 234 5678</p>
+          <p className="text-gray-600">+94 763912183</p>
         </div>
 
         <div className="bg-white p-6 rounded-2xl shadow hover:shadow-lg text-center border-t-4 border-[#3674B5] transition">
           <FaEnvelope className="text-4xl text-[#3674B5] mx-auto mb-4" />
           <h3 className="text-xl font-bold mb-2">Email</h3>
-          <p className="text-gray-600">support@kvaudio.com</p>
+          <p className="text-gray-600">chathuraasela11@gmail.com</p>
         </div>
 
         <div className="bg-white p-6 rounded-2xl shadow hover:shadow-lg text-center border-t-4 border-[#3674B5] transition">

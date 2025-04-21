@@ -146,6 +146,18 @@ export default function InquiryPage() {
                                         [inquiry._id]: e.target.value
                                     })}
                                 ></textarea>
+                                {!inquiry.isResolved &&
+                                    <div className="flex gap-2 mt-4 mb-4 ">
+                                        <button
+                                            onClick={() => handleUpdateInquiry(inquiry)}
+                                            className="w-[200px] flex items-center justify-center bg-green-500 text-white py-2 rounded-xl hover:bg-green-600 transition cursor-pointer"
+                                        >
+                                            Update Message
+                                        </button>
+
+                                        
+                                    </div>
+                                }
 
                                 <p className="text-gray-600 mb-1"><strong>Response:</strong> {inquiry.response !== "" ? inquiry.response : "Not Responded"}</p>
                                 <p className="text-gray-500 text-sm mb-3">Date: {new Date(inquiry.date).toLocaleDateString()}</p>
@@ -154,22 +166,15 @@ export default function InquiryPage() {
                                 </span>
                             </div>
 
-                            <div className="flex gap-2 mt-4">
-                                <button
-                                    onClick={() => handleUpdateInquiry(inquiry)}
-                                    className="flex-1 bg-green-500 text-white py-2 rounded-xl hover:bg-green-600 transition cursor-pointer"
-                                >
-                                    update
-                                </button>
-
-                                <div
-                                    className="p-2 hover:text-red-500 cursor-pointer bg-white rounded-xl border border-gray-200 flex items-center justify-center"
-                                    onClick={() => handleDeleteInquiry(inquiry)}
-                                >
-                                    <MdDelete size={20} />
-                                </div>
+                            
+                            <div
+                                className="p-2 hover:text-red-500 cursor-pointer bg-white rounded-xl border border-gray-200 flex items-center justify-center absolute right-1 top-1"
+                                onClick={() => handleDeleteInquiry(inquiry)}
+                            >
+                                <MdDelete size={20} />
                             </div>
                         </div>
+                        
                     ))}
                 </div>
             )}

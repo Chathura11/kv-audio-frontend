@@ -143,12 +143,12 @@ export default function AdminReviewPage(){
                                 <p><span className="font-semibold">Approval Status : </span>{activeReview.isApproved?'Approved':'Pending'}</p>
                             </div>
                             <div className="my-5 w-full flex items-center">
-                                <button className="bg-green-500 text-white px-4 py-1 rounded-md cursor-pointer hover:bg-green-900" onClick={()=>{
+                                <button className="bg-green-500 text-white px-4 py-1 rounded-md cursor-pointer hover:bg-green-600" onClick={()=>{
                                     handleReviewStatusChange(activeReview.email,true)
                                 }}>
                                     Approve
                                 </button>
-                                <button className="bg-red-500 text-white px-4 py-1 rounded-md ml-4 cursor-pointer hover:bg-red-900" onClick={()=>{
+                                <button className="bg-red-500 text-white px-4 py-1 rounded-md ml-4 cursor-pointer hover:bg-red-600" onClick={()=>{
                                     deleteReview(activeReview.email)
                                 }}>
                                     Delete
