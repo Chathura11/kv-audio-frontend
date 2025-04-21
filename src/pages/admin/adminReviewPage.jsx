@@ -78,8 +78,8 @@ export default function AdminReviewPage(){
     }
 
     return(
-        <div className="w-full p-4">
-            <h1 className="text-3xl font-bold mb-8">Admin Reviews Page</h1>
+        <div className="p-8 min-h-screen bg-gradient-to-br from-gray-100 to-gray-200">
+            <h1 className="text-4xl font-extrabold text-center mb-10 text-accent">Admin Reviews Page</h1>
             {loading ? (
                 <div className="flex justify-center items-center mt-20">
                     <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
@@ -87,7 +87,7 @@ export default function AdminReviewPage(){
             ) : (
                 <div className="overflow-x-auto shadow-lg rounded-lg bg-white">
                     <table className="w-full text-sm text-left text-gray-700">
-                        <thead className="bg-gray-100 uppercase text-xs font-semibold">
+                        <thead className="bg-gray-200 uppercase text-xs font-semibold">
                             <tr>
                                 <th className="p-3">Product</th>
                                 <th className="p-3">Email</th>

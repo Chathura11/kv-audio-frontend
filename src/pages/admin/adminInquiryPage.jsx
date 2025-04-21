@@ -67,8 +67,8 @@ export default function AdminInquiryPage() {
     }
 
     return (
-        <div className="w-full p-4">
-            <h1 className="text-3xl font-bold mb-8">Admin Inquiry Page</h1>
+        <div className="p-8 min-h-screen bg-gradient-to-br from-gray-100 to-gray-200">
+            <h1 className="text-4xl font-extrabold text-center mb-10 text-accent">Admin Inquiry Page</h1>
 
             {loading ? (
                 <div className="flex justify-center items-center mt-20">
@@ -77,7 +77,7 @@ export default function AdminInquiryPage() {
             ) : (
                 <div className="overflow-x-auto shadow-lg rounded-lg bg-white">
                     <table className="w-full text-sm text-left text-gray-700">
-                        <thead className="bg-gray-100 uppercase text-xs font-semibold">
+                        <thead className="bg-gray-200 uppercase text-xs font-semibold">
                             <tr>
                                 <th className="p-3">Email</th>
                                 <th className="p-3">Date</th>

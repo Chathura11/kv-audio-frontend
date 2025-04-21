@@ -12,7 +12,7 @@ import axios from "axios";
 import AdminReviewPage from "./adminReviewPage";
 import AdminDashboard from "./adminDashboard";
 import { MdWebAsset } from "react-icons/md";
-import { IoMdSearch } from "react-icons/io";
+import { FaRegQuestionCircle } from "react-icons/fa";
 import AdminInquiryPage from "./adminInquiryPage";
 
 export default function AdminPage() {
@@ -62,7 +62,7 @@ export default function AdminPage() {
           Reviews
         </Link>
         <Link to="/admin/inquiries" className="flex items-center gap-3 p-4 text-lg hover:bg-[#025043] transition">
-          <IoMdSearch className="text-2xl" />
+          <FaRegQuestionCircle className="text-2xl" />
           Inquiries
         </Link>
         <Link to="/admin/users" className="flex items-center gap-3 p-4 text-lg hover:bg-[#025043] transition">

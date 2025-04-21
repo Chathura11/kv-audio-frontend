@@ -136,16 +136,20 @@ export default function InquiryPage() {
                                 <p className="text-gray-600 mb-1"><strong>Phone:</strong> {inquiry.phone}</p>
 
                                 <p className="text-gray-600 mb-1"><strong>Message:</strong></p>
-                                <textarea
-                                    cols="30"
-                                    rows="2"
-                                    className="w-full p-2 border rounded-lg mt-1"
-                                    value={editedMessages[inquiry._id] || ""}
-                                    onChange={(e) => setEditedMessages({
-                                        ...editedMessages,
-                                        [inquiry._id]: e.target.value
-                                    })}
-                                ></textarea>
+                                {!inquiry.isResolved ?
+                                    <textarea
+                                        cols="30"
+                                        rows="2"
+                                        className="w-full p-2 border rounded-lg mt-1"
+                                        value={editedMessages[inquiry._id] || ""}
+                                        onChange={(e) => setEditedMessages({
+                                            ...editedMessages,
+                                            [inquiry._id]: e.target.value
+                                        })}
+                                    ></textarea>
+                                    :
+                                    <p className="text-gray-600 mb-1">{inquiry.message}</p>
+                                }
                                 {!inquiry.isResolved &&
                                     <div className="flex gap-2 mt-4 mb-4 ">
                                         <button

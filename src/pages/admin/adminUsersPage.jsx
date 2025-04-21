@@ -38,8 +38,8 @@ export default function AdminUsersPage() {
     }
 
     return (
-        <div className="p-4">
-            <h1 className="text-3xl font-bold mb-8">Admin Users Page</h1>
+        <div className="p-8 min-h-screen bg-gradient-to-br from-gray-100 to-gray-200">
+            <h1 className="text-4xl font-extrabold text-center mb-10 text-accent">Admin Users Page</h1>
             {loading ? (
                 <div className="flex justify-center items-center mt-20">
                     <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
@@ -47,7 +47,7 @@ export default function AdminUsersPage() {
             ) : (
                 <div className="overflow-x-auto w-full shadow-md rounded-lg bg-white">
                     <table className="min-w-full text-gray-700">
-                        <thead className="bg-gray-100 uppercase text-xs font-semibold">
+                        <thead className="bg-gray-200 uppercase text-xs font-semibold">
                             <tr className="bg-gray-100">
                                 <th className="py-3 px-4 ">Profile</th>
                                 <th className="py-3 px-4 ">First Name</th>

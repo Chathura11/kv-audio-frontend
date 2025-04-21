@@ -39,8 +39,8 @@ export default function AdminItemPage() {
     };
 
     return (
-        <div className="w-full p-4">
-            <h1 className="text-3xl font-bold mb-8">Admin Items Page</h1>
+        <div className="p-8 min-h-screen bg-gradient-to-br from-gray-100 to-gray-200">
+            <h1 className="text-4xl font-extrabold text-center mb-10 text-accent">Admin Items Page</h1>
 
             {loading ? (
                 <div className="flex justify-center items-center mt-20">
@@ -51,7 +51,7 @@ export default function AdminItemPage() {
             ) : (
                 <div className="overflow-x-auto w-full shadow-md rounded-lg bg-white">
                     <table className="min-w-full text-gray-700">
-                        <thead className="bg-gray-100 uppercase text-xs font-semibold">
+                        <thead className="bg-gray-200 uppercase text-xs font-semibold">
                             <tr>
                                 <th className="py-3 px-4 text-left">Key</th>
                                 <th className="py-3 px-4 text-left">Name</th>
