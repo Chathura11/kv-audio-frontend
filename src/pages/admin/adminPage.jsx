@@ -1,5 +1,5 @@
 import { BsGraphDown } from "react-icons/bs";
-import { FaRegBookmark, FaRegUserCircle } from "react-icons/fa";
+import { FaRegBookmark, FaRegUserCircle,FaStar  ,FaBoxOpen,FaClipboardList,FaUsers ,FaQuestionCircle,FaWindowMaximize } from "react-icons/fa";
 import { LuSpeaker } from "react-icons/lu";
 import { MdOutlinePreview } from "react-icons/md";
 import { Link, Route, Routes } from "react-router-dom";
@@ -14,6 +14,7 @@ import AdminDashboard from "./adminDashboard";
 import { MdWebAsset } from "react-icons/md";
 import { FaRegQuestionCircle } from "react-icons/fa";
 import AdminInquiryPage from "./adminInquiryPage";
+import { TbLogout2 } from "react-icons/tb";
 
 export default function AdminPage() {
   const [userValidated, setUserValidated] = useState(false);
@@ -50,29 +51,36 @@ export default function AdminPage() {
           Dashboard
         </Link>
         <Link to="/admin/orders" className="flex items-center gap-3 p-4 text-lg hover:bg-[#025043] transition">
-          <FaRegBookmark className="text-2xl" />
+          <FaClipboardList className="text-2xl" />
           Orders
         </Link>
         <Link to="/admin/items" className="flex items-center gap-3 p-4 text-lg hover:bg-[#025043] transition">
-          <LuSpeaker className="text-2xl" />
+          <FaBoxOpen className="text-2xl" />
           Items
         </Link>
         <Link to="/admin/reviews" className="flex items-center gap-3 p-4 text-lg hover:bg-[#025043] transition">
-          <MdOutlinePreview className="text-2xl" />
+          <FaStar   className="text-2xl" />
           Reviews
         </Link>
         <Link to="/admin/inquiries" className="flex items-center gap-3 p-4 text-lg hover:bg-[#025043] transition">
-          <FaRegQuestionCircle className="text-2xl" />
+          <FaQuestionCircle className="text-2xl" />
           Inquiries
         </Link>
         <Link to="/admin/users" className="flex items-center gap-3 p-4 text-lg hover:bg-[#025043] transition">
-          <FaRegUserCircle className="text-2xl" />
+          <FaUsers className="text-2xl" />
           Users
         </Link>
         <Link to="/" className="flex items-center gap-3 p-4 text-lg hover:bg-[#025043] transition">
-          <MdWebAsset className="text-2xl" />
+          <FaWindowMaximize className="text-2xl" />
           Go to Site
         </Link>
+        <div className="flex items-center gap-3 p-4 text-lg hover:bg-[#025043] transition cursor-pointer" onClick={()=>{
+          localStorage.removeItem('token')
+          window.location.href = '/login'
+        }}>
+          <TbLogout2 className="text-2xl" />
+          Log Out
+        </div>
       </aside>
 
       {/* Content Area */}

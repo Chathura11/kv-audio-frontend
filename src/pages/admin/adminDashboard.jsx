@@ -40,7 +40,7 @@ export default function AdminDashboard() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
 
-                <Card title="Total Products" count={productCount} Icon={FaBoxOpen} bg="bg-blue-100" text="text-blue-700" />
+                <Card title="Total Items" count={productCount} Icon={FaBoxOpen} bg="bg-blue-100" text="text-blue-700" />
                 <Card title="Total Orders" count={orderCount} Icon={FaClipboardList} bg="bg-yellow-100" text="text-yellow-700" />
                 <Card title="Total Reviews" count={reviewCount} Icon={FaStar} bg="bg-purple-100" text="text-purple-700" />
                 <Card title="Total Users" count={userCount} Icon={FaUsers} bg="bg-green-100" text="text-green-700" />

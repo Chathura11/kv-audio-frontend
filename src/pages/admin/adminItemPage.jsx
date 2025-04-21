@@ -100,7 +100,7 @@ export default function AdminItemPage() {
 
             <Link
                 to="/admin/items/add"
-                className="fixed bottom-6 right-6 bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-800 transition"
+                className="fixed bottom-6 right-12 bg-blue-600 text-white p-4 rounded-xl shadow-lg hover:bg-blue-800 transition"
             >
                 <CiCirclePlus className="text-4xl" />
             </Link>
