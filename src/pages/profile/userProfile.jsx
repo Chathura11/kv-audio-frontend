@@ -65,14 +65,20 @@ export default function UserProfile() {
                                 </span>
                             </div>
                             <div className="flex justify-between">
-                                <span className="font-medium text-gray-600">Joined:</span>
-                                <span className="text-gray-800">
-                                    {new Date(user.iat * 1000).toLocaleDateString()}
-                                </span>
+                                <span className="font-medium text-gray-600">Address:</span>
+                                <span className="text-gray-800">{user.address}</span>
                             </div>
                         </div>
 
                         <div className="mt-6 flex flex-col sm:flex-row gap-4">
+
+                            <button 
+                                onClick={() => navigate('/user-edit')}
+                                className="bg-accent text-white px-6 py-2 rounded-full hover:bg-blue-900 transition shadow-md cursor-pointer"
+                            >
+                                Edit Profile
+                            </button>        
+
                             {user.role === "customer" && (
                                 <button 
                                     onClick={() => navigate('/user-orders')}
