@@ -1,32 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { FaBars, FaCartPlus } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import MobileNavPanel from './mobileNavPanel';
 import { CiLogout,CiLogin } from "react-icons/ci";
-import axios from 'axios';
-import { IoSettings } from "react-icons/io5";
+import { CgProfile } from "react-icons/cg";
 
 function header() {
 
   const [navPanelOpen,setNavPanelOpen] = useState(false);
   const token = localStorage.getItem('token');
-  const [user,setUser] = useState(null);
 
-  useEffect(() => {
-    LoadUser();
-  }, [])
-
-  async function LoadUser(){
-    await axios.get(import.meta.env.VITE_BACKEND_URL+'/api/users/',{headers:{
-        Authorization:`Bearer ${token}`
-    }}).then((result)=>{
-        setUser(result.data);
-        console.log(result.data)
-      }).catch((error)=>{
-        console.log(error)
-      })
-  }
-
+  const navigate = useNavigate();
 
 
   return (
@@ -52,9 +36,9 @@ function header() {
           }}/>
         }
         {
-          user && user.role == "admin" &&
-          <IoSettings className='hidden md:block absolute right-15 text-[30px] cursor-pointer rounded-full p-1 hover:bg-white hover:text-accent' onClick={()=>{
-            window.location.href = '/admin'
+          token &&
+          <CgProfile className='hidden md:block absolute right-15 text-[30px] cursor-pointer rounded-full p-1 hover:bg-white hover:text-accent' onClick={()=>{
+            navigate('/user-profile');
           }}/>
         }
         <MobileNavPanel isOpen={navPanelOpen} setOpen={setNavPanelOpen}/>

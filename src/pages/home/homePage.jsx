@@ -9,6 +9,8 @@ import Error from './error'
 import ProductOverView from './productOverview'
 import BookingPage from './bookingPage';
 import InquiryPage from './inquiryPage';
+import UserProfile from '../profile/userProfile';
+import UserOrders from '../profile/userOrders';
 
 function homePage() {
   return (
@@ -21,6 +23,8 @@ function homePage() {
                 <Route path='/gallery' element={<Gallery/>}/>
                 <Route path='/item' element={<Item/>}/>
                 <Route path='/booking' element={<BookingPage/>}></Route>
+                <Route path='/user-profile' element={<UserProfile/>}></Route>
+                <Route path='/user-orders' element={<UserOrders/>}></Route>
                 <Route path='/inquiry' element={<InquiryPage/>}></Route>
                 <Route path='/product/:key' element={<ProductOverView/>}/>
                 <Route path='/' element={<Home/>}/>

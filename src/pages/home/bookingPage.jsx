@@ -44,22 +44,28 @@ export default function BookingPage() {
         cart.endingDate = endDate;
         cart.days = totalDays;
 
-        const token = localStorage.getItem("token");
-        const backendUrl = import.meta.env.VITE_BACKEND_URL; 
+        if(cart.orderedItems.length > 0){
+            const token = localStorage.getItem("token");
+            const backendUrl = import.meta.env.VITE_BACKEND_URL; 
 
-        axios.post(backendUrl+"/api/orders",cart,{
-            headers:{
-                Authorization : `Bearer ${token}`
-            }
-        }).then((res)=>{
-            console.log(res.data);
-            localStorage.removeItem("cart");
-            setCart(loadCart());
-            toast.success("Booking Created!");
-        }).catch((error)=>{
-            console.log(error)
-            toast.error("Failed to create booking!");
-        })
+            axios.post(backendUrl+"/api/orders",cart,{
+                headers:{
+                    Authorization : `Bearer ${token}`
+                }
+            }).then((res)=>{
+                console.log(res.data);
+                localStorage.removeItem("cart");
+                setCart(loadCart());
+                toast.success("Booking Created!");
+            }).catch((error)=>{
+                console.log(error)
+                toast.error("Failed to create booking!");
+            })
+        }else{
+            toast.error("Your cart is empty.");
+        }
+
+        
     }
 
     function calculateDays(start, end) {

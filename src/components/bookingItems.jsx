@@ -69,9 +69,9 @@ export default function BookingItem(props) {
             <div className="flex items-center space-x-4">
                 {item?.image && (
                     <img
-                        src={item.image}
+                        src={item.image[0]}
                         alt={item.name}
-                        className="w-20 h-20 object-cover rounded-xl"
+                        className="w-20 h-20 object-contain rounded-xl"
                     />
                 )}
                 <div>

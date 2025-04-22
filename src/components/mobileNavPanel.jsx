@@ -1,9 +1,8 @@
 import { IoMdClose } from "react-icons/io";
 import { useEffect, useState } from "react";
-import { CiHome, CiImageOn, CiMail, CiShoppingTag, CiCalendar} from "react-icons/ci";
+import { CiHome, CiImageOn, CiMail, CiShoppingTag, CiCalendar,CiCircleQuestion,CiUser  } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
 import { CiLogout,CiLogin } from "react-icons/ci";
-import { CiSearch } from "react-icons/ci";
 
 export default function MobileNavPanel(props) {
     const isOpen = props.isOpen;
@@ -67,8 +66,15 @@ export default function MobileNavPanel(props) {
                                 <CiCalendar className="text-2xl" /> Booking
                             </div>
                             <div onClick={() => Goto('/inquiry')} className='flex items-center gap-3 text-[18px] text-gray-700 hover:bg-accent hover:text-white p-2 rounded-lg cursor-pointer transition'>
-                                <CiSearch className="text-2xl" /> Inquiries
+                                <CiCircleQuestion  className="text-2xl" /> Inquiries
                             </div>
+                            {
+                                token &&
+                                <div onClick={() => Goto('/user-profile')} className='flex items-center gap-3 text-[18px] text-gray-700 hover:bg-accent hover:text-white p-2 rounded-lg cursor-pointer transition'>
+                                    <CiUser  className="text-2xl" /> Profile
+                                </div>
+
+                            }
                             {token !=null ?
                                 <div onClick={() => {
                                     localStorage.removeItem('token')
