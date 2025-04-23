@@ -107,7 +107,7 @@ export default function ProductOverView(){
         })
 
         setTotalRating(total);
-        total = total/count;
+        total = (total/count).toFixed(1);
         setAveRating(total);
         
         setFiveRating(fiveCount);
