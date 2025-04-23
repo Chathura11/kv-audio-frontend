@@ -44,11 +44,11 @@ export default function VerifyEmail(){
 
     return(
         <div className="w-full h-screen flex justify-center items-center">
-            <div className="w-[400px] h-[300px] bg-white shadow-lg rounded-lg flex flex-col items-center justify-center">
+            <div className="w-[400px] h-[300px] bg-white shadow-lg rounded-lg flex flex-col items-center justify-center space-y-2">
                 <h1 className="text-2xl font-bold ">Verify Email</h1>
-                <p className="text-gray-500">Please Verify yoour email</p>
+                <p className="text-gray-500">Please Verify your email</p>
                 <input type="Number" placeholder="OTP" value={otp} onChange={(e)=>setOtp(e.target.value)} className="border p-2 rounde-lg w-[80%]"/>
-                <button onClick={handleVerifyEmail} className="bg-blue-500 text-white p-2 rounded-lg w-[80%]">Verify</button>
+                <button onClick={handleVerifyEmail} className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-lg w-[80%] cursor-pointer">Verify</button>
             </div>
         </div>
     )

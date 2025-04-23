@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./login.css";
 import axios from 'axios';
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useGoogleLogin } from "@react-oauth/google";
 import { FaGoogle } from "react-icons/fa";
 
@@ -80,6 +80,10 @@ export default function Login() {
                     >
                         Login
                     </button>
+
+                    <div className="text-accent border-b mt-[-15px]">
+                        <Link to="/forgot-password">Forgot Password</Link>
+                    </div>
 
                     <div
                         onClick={googleLogin}
