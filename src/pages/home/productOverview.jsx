@@ -85,7 +85,7 @@ export default function ProductOverView(){
         let oneCount = 0;
 
         reviews && reviews.map((review)=>{            
-            total += parseInt(review.rating);
+            total += parseFloat(review.rating);
             count +=1; 
 
             if(parseFloat(review.rating) <= 5 && parseFloat(review.rating) > 4){
