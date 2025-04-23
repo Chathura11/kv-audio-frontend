@@ -2,11 +2,13 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import Spinner from "../../components/spinner.jsx";
 
 export default function VerifyEmail(){
     const token = localStorage.getItem('token');
     const [otp,setOtp] = useState("");
     const navigate = useNavigate();
+    const [sending,setSending] = useState(false);
 
     useEffect(() => {
       axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/users/sendOTP`,{
@@ -21,6 +23,7 @@ export default function VerifyEmail(){
     }, [])
 
     function handleVerifyEmail(){
+        setSending(true);
         axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/users/verifyEmail`,
             {
                 code:parseInt(otp)
@@ -32,13 +35,14 @@ export default function VerifyEmail(){
             }
         
         ).then((res)=>{
-            console.log(res.data);
+            setSending(false);
             toast.success("Email verified successfully!");
             navigate('/');
 
         }).catch((error)=>{
             console.log(error);
             toast.error("Invalid OTP");
+            setSending(false);
         })
     }
 
@@ -48,7 +52,9 @@ export default function VerifyEmail(){
                 <h1 className="text-2xl font-bold ">Verify Email</h1>
                 <p className="text-gray-500">Please Verify your email</p>
                 <input type="Number" placeholder="OTP" value={otp} onChange={(e)=>setOtp(e.target.value)} className="border p-2 rounde-lg w-[80%]"/>
-                <button onClick={handleVerifyEmail} className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-lg w-[80%] cursor-pointer">Verify</button>
+                <button onClick={handleVerifyEmail} className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-lg w-[80%] cursor-pointer">
+                    {sending ? <Spinner /> : "Verify"}
+                </button>
             </div>
         </div>
     )
